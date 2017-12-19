@@ -1,0 +1,17 @@
+VariableType			内置类型
+Property				属性
+ConditionAndLoop		条件和循环语句
+Enum					枚举
+Macro					预处理器
+SpecialAnnotation		注释
+UsingAlias				命名空间别名
+StaticConstruct			静态构造函数（readonly 和 const 区别）
+AnonymousObject			匿名对象
+WeakReference			弱引用对象 系统随时可能回收的对象
+partial					将一个大类分在多个文件书写
+IncreateFunction		动态给一个类添加方法
+Extend					类实例继承
+Interface				接口
+
+装箱(boxing) 将值类型转换为引用类型
+拆箱(unboxing) 将引用类型转换为值类型
