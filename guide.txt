@@ -22,3 +22,19 @@ Nullable				可空类型和合并运算符(??)
 Array					容器 数组
 Enumerator				迭代器
 Tuple					容器 元祖 
+Operator				运算符重载
+Delegate				委托
+Lambda					Lambda表达式
+Event					事件 
+StringOperator			字符串的操作 含正则表达式
+
+List					容器 List 的相关操作
+Queue					容器 Queue (队) 的相关操作
+Stack					容器 Stack（栈） 的相关操作
+LinkedList				容器 LinkedList（双向链表） 的相关操作
+SortedList				容器 SortedList（有序列表） 的相关操作
+Dictionary				容器 Dictionary（字典 也叫映射或散列） 的相关操作
+Lookup					linq容器 lookup （1 key 对 多 value）
+SortedDictionary		容器 SortedDictionary 用法与SortedList一样 实现方式不同
+HashSet					容器 HashSet
+SortedSet				容器 SortedSet
