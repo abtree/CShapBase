@@ -9,7 +9,7 @@ StaticConstruct			静态构造函数（readonly 和 const 区别）
 AnonymousObject			匿名对象
 WeakReference			弱引用对象 系统随时可能回收的对象
 partial					将一个大类分在多个文件书写
-IncreateFunction		动态给一个类添加方法
+IncreateFunction		动态给一个类添加方法(扩展方法)
 Extend					类实例继承
 Interface				接口
 
@@ -19,15 +19,16 @@ Interface				接口
 Template 				泛型（模版）基础
 TemplateInOut			泛型协变与抗变  out 用于返回值 in 用于参数 派生类向基类的隐式转换
 Nullable				可空类型和合并运算符(??)
-Array					容器 数组
 Enumerator				迭代器
-Tuple					容器 元祖 
 Operator				运算符重载
 Delegate				委托
 Lambda					Lambda表达式
 Event					事件 
 StringOperator			字符串的操作 含正则表达式
 
+[Collection]			容器
+Array					容器 数组
+Tuple					容器 元祖 
 List					容器 List 的相关操作
 Queue					容器 Queue (队) 的相关操作
 Stack					容器 Stack（栈） 的相关操作
@@ -43,5 +44,17 @@ BitArray				容器 BitArray 位数组(可改变长度的 引用类型)
 BitVector32				容器 BitVector32 位数组（值类型 效率比BitArray高 固定长度）
 ImmutableXXX			不变集合 可将任意集合转变成不变集合 如果要修改，会新创建一个集合 原集合不变
 Concurrent				并发集合 线程安全的容器
-[LINQ]
+
+[LINQ]					Linq是一个非常深奥的主题
 FromWhereSelect			LINQ 语句中from where select等的基本用法
+ConcurrentLinq			并发 linq
+
+[dynamic]				C#的动态语言特性
+DynamicBase				dynamic类型变量的基本使用
+ScriptRuntime			C#调用其它脚本语言的方式（需配置app.config）
+DynObject				创建自己的动态对象
+
+[async]					异步编程
+BeginEnd				以BeginXXX() EndXXX() 调用 代替原来的XXX()调用
+EventAsync				基于事件的异步模式
+TAP						基于任务的异步模式

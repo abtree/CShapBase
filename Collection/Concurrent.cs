@@ -207,11 +207,9 @@ namespace Concurrent
 
         public static void Main()
         {
-            //这里用循环保证线程不过早退出
-             while (true)
-            {
-                StartPipeline();
-            }
+            StartPipeline();
+            //这里保证主线程不过早退出
+            Console.ReadLine();
         }
     }
 }

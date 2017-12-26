@@ -207,11 +207,207 @@ namespace FromWhereSelect
             }
         }
 
+        private static void Group()
+        {
+            var countries = from r in Formula1.GetChampions()
+                            group r by r.Country into g
+                            orderby g.Count() descending, g.Key
+                            where g.Count() >= 2
+                            select new {
+                                Country = g.Key,
+                                Count = g.Count(),
+                                //这里嵌套一个查询
+                                Racers = from r1 in g
+                                         orderby r1.LastName
+                                         select r1.FirstName + " " + r1.LastName
+                            };
+            foreach(var item in countries)
+            {
+                Console.WriteLine("{0, -10} {1}", item.Country, item.Count);
+            }
+        }
+
+        private static void Join()
+        {
+            var racers = from r in Formula1.GetChampions()
+                         from y in r.Years
+                         select new
+                         {
+                             Year = y,
+                             Name = r.FirstName + " " + r.LastName
+                         };
+            var teams = from t in Formula1.GetContructorChampions()
+                        from y in t.Years
+                        select new
+                        {
+                            Year = y,
+                            Name = t.Name
+                        };
+            var racersAndTeams = (from r in racers
+                                  join t in teams on r.Year equals t.Year
+                                  select new
+                                  {
+                                      r.Year,
+                                      Champion = r.Name,
+                                      Constructor = t.Name
+                                  }).Take(10);  //取前10项
+            //左外连接  teams 项可能为空值
+            var racersWithTeams = (from r in racers
+                                   join t in teams on r.Year equals t.Year into rt
+                                   from t in rt.DefaultIfEmpty()
+                                   orderby r.Year
+                                   select new
+                                   {
+                                       Year = r.Year,
+                                       Champion = r.Name,
+                                       Constructor = t == null ? "no constructor championship" : t.Name
+                                   }).Take(10);
+            Console.WriteLine("Year World Champion \t Constructor Title");
+            foreach (var item in racersAndTeams)
+            {
+                Console.WriteLine("{0}: {1, -20} {2}", item.Year, item.Champion, item.Constructor);
+            }
+            foreach (var item in racersWithTeams)
+            {
+                Console.WriteLine("{0}: {1, -20} {2}", item.Year, item.Champion, item.Constructor);
+            }
+        }
+
+        private static void delegateSelect()
+        {
+            //定义一个委托方法保存查询
+            Func<string, IEnumerable<Racer>> racersByCar = car =>
+            from r in Formula1.GetChampions()
+            from c in r.Cars
+            where c == car
+            orderby r.LastName
+            select r;
+            
+            //查询同时满足这两个条件的集合
+            foreach(var racer in racersByCar("Ferrari").Intersect(racersByCar("McLaren")))
+            {
+                Console.WriteLine(racer);
+            }
+        }
+
+        private static void Zip()
+        {
+            var racerName = from r in Formula1.GetChampions()
+                            where r.Country == "Italy"
+                            orderby r.Wins descending
+                            select new { Name = r.FirstName + " " + r.LastName };
+            var racerNamesAndStarts = from r in Formula1.GetChampions()
+                                      where r.Country == "Italy"
+                                      orderby r.Wins descending
+                                      select new { LastName = r.LastName, Starts = r.Starts };
+            //此处将两次查询合并
+            var racers = racerName.Zip(racerNamesAndStarts, (first, second) => first.Name + " , starts: " + second.Starts);
+            foreach(var r in racers)
+            {
+                Console.WriteLine(r);
+            }
+        }
+
+        //分页
+        private static void PageSize()
+        {
+            int pageSize = 5;
+            int numberPages = (int)Math.Ceiling(Formula1.GetChampions().Count() / (double)pageSize);
+            for (int page = 0; page < numberPages; ++page)
+            {
+                var racers = (from r in Formula1.GetChampions()
+                              orderby r.LastName, r.FirstName
+                              select r.FirstName + " " + r.LastName).Skip(page * pageSize).Take(pageSize);
+                foreach(var name in racers)
+                {
+                    Console.WriteLine(name);
+                }
+                Console.WriteLine();
+             }
+        }
+
+        private static void Math()
+        {
+            var query = from r in Formula1.GetChampions()
+                        let numberYears = r.Years.Count()
+                        where numberYears >= 3
+                        orderby numberYears descending, r.LastName
+                        select new
+                        {
+                            Name = r.FirstName + " " + r.LastName,
+                            TimesChampion = numberYears
+                        };
+            foreach(var r in query)
+            {
+                Console.WriteLine("{0} {1}", r.Name, r.TimesChampion);
+            }
+
+            var countrys = (from c in
+                                from r in Formula1.GetChampions()
+                                group r by r.Country into c
+                                select new
+                                {
+                                    Country = c.Key,
+                                    Wins = (from r1 in c select r1.Wins).Sum()
+                                }
+                            orderby c.Wins descending, c.Country
+                            select c).Take(10);
+            foreach(var country in countrys)
+            {
+                Console.WriteLine("{0} {1}", country.Country, country.Wins);
+            }
+        }
+
+        private static void ToLookup()
+        {
+            var racers = (from r in Formula1.GetChampions()
+                          from c in r.Cars
+                          select new
+                          {
+                              Car = c,
+                              Racer = r
+                          }).ToLookup(cr => cr.Car, cr => cr.Racer);
+            if (racers.Contains("Williams"))
+            {
+                foreach(var williamsRacer in racers["Williams"])
+                {
+                    Console.WriteLine(williamsRacer);
+                }
+            }
+        }
+
+        //在非类型化的集合上使用linq查询 需要cast
+        private static void Cast()
+        {
+            var lists = new System.Collections.ArrayList(Formula1.GetChampions() as System.Collections.ICollection);
+            var quary = from r in lists.Cast<Racer>()
+                        where r.Country == "USA"
+                        orderby r.Wins descending
+                        select r;
+            foreach(var racer in quary)
+            {
+                Console.WriteLine("{0:A}", racer);
+            }
+        }
+
+        private static void Range()
+        {
+            var values = Enumerable.Range(1, 30).Select(n => n * 3);
+            foreach(var item in values)
+            {
+                Console.Write("{0} ", item);
+            }
+            Console.WriteLine();
+        }
+
         public static void Main()
         {
             LinqQuery();
             LinqString();
             OfTypeUse();
+            Group();
+            Join();
+            delegateSelect();
         }
     }
 }
