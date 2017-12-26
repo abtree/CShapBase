@@ -15,6 +15,10 @@ namespace SortedSet_
             {
                 Console.WriteLine("aaa already exist");
             }
+            //通过UnionWith可将多个set连成一个
+            //companyTeam.UnionWith(companyTeam);
+            //调用ExceptWith可以将一个set中包含的另一个set的内容全部删除
+            //companyTeam.ExceptWith(companyTeam);
         }
     }
 }

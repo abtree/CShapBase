@@ -38,7 +38,10 @@ Lookup					linq容器 lookup （1 key 对 多 value）
 SortedDictionary		容器 SortedDictionary 用法与SortedList一样 实现方式不同
 HashSet					容器 HashSet
 SortedSet				容器 SortedSet
-
-Concurrent				线程安全的容器
+ObservableCollection	WPF 容器 ObservableCollection(可观察集合)
+BitArray				容器 BitArray 位数组(可改变长度的 引用类型)
+BitVector32				容器 BitVector32 位数组（值类型 效率比BitArray高 固定长度）
+ImmutableXXX			不变集合 可将任意集合转变成不变集合 如果要修改，会新创建一个集合 原集合不变
+Concurrent				并发集合 线程安全的容器
 [LINQ]
 FromWhereSelect			LINQ 语句中from where select等的基本用法
