@@ -14,6 +14,7 @@ namespace IncreateFunction
     public static class CAEx
     {
         //将这个方法添加给CA (但这个方法不能访问CA的private或protected成员)
+        //注意 第一个参数指定扩展哪个类 必须用this指针
         public static int AddToA(this CA ca, int a, int b)
         {
             return ca.A + a + b;

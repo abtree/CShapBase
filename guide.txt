@@ -38,3 +38,7 @@ Lookup					linq容器 lookup （1 key 对 多 value）
 SortedDictionary		容器 SortedDictionary 用法与SortedList一样 实现方式不同
 HashSet					容器 HashSet
 SortedSet				容器 SortedSet
+
+Concurrent				线程安全的容器
+[LINQ]
+FromWhereSelect			LINQ 语句中from where select等的基本用法
