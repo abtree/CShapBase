@@ -58,3 +58,9 @@ DynObject				创建自己的动态对象
 BeginEnd				以BeginXXX() EndXXX() 调用 代替原来的XXX()调用
 EventAsync				基于事件的异步模式
 TAP						基于任务的异步模式
+
+FinalizeAndDispose		C#中的一些析构操纵
+Pointer					C# 中指针的使用
+
+[Attributes]			C# 的特性
+BaseAttribute			自定义attribute的基本用法
