@@ -62,5 +62,16 @@ TAP						基于任务的异步模式
 FinalizeAndDispose		C#中的一些析构操纵
 Pointer					C# 中指针的使用
 
-[Attributes]			C# 的特性
+[Attributes]			C# 的特性(非常大的一块内容)
 BaseAttribute			自定义attribute的基本用法
+TypeView				查看一个类型的信息
+MoreExample				特性的更多功能的一个例子（特性的内容需要单独的一本书才能讲清楚）
+
+[Exception]				异常处理
+SimpleException			基本的异常处理实例
+UserException			自定义的异常
+AttributeException		带特性参数的异常
+
+[UnitTest]				单元测试 目前发现和VisualStudio关系比较紧密 需要创建UnitTest项目
+
+AppDomain				控制加载卸载C#程序集等功能
