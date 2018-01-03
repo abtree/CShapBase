@@ -75,3 +75,10 @@ AttributeException		带特性参数的异常
 [UnitTest]				单元测试 目前发现和VisualStudio关系比较紧密 需要创建UnitTest项目
 
 AppDomain				控制加载卸载C#程序集等功能
+
+[Thread]				栈是每个线程独立的，堆是一个进程所有线程共享的（前台线程不会随主线程结束而结束，后台线程会）
+Parallel				多线程的for foreach调用
+TaskGeneral				Task的更多用法
+ThreadPool				系统管理的线程池
+Thread 					通过Thread创建线程
+Sync					线程之间的同步问题
