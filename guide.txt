@@ -93,3 +93,13 @@ ECDsa					非对称加密
 ECDiffieHellman			该例子先用ECDiffieHellman生成非对称密钥 在用AES生成对称密钥
 
 [FileAndRegister]		文件操作和注册表
+FileInfo				获取文件信息
+ReadWrite				文件的读写 包括磁盘信息
+FileAccessControl		文件权限相关的读写
+Regedit					注册表操作（需要权限）
+IsolatedStorage			独立存储器的读写(独立存储器可以看成有访问权限的虚拟内存)
+
+[Transaction]			包含数据库和其它支持事务的操作
+CommittableTransaction	简单的数据库事务(现在一般用SqlTransaction代替)
+EnterpriseServices		使用注解自动添加的事务（需要引入同名引用包）
+DependentTransaction	建立事务与事务之间的依赖关系
