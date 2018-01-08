@@ -99,8 +99,22 @@ FileAccessControl		文件权限相关的读写
 Regedit					注册表操作（需要权限）
 IsolatedStorage			独立存储器的读写(独立存储器可以看成有访问权限的虚拟内存)
 
-[Transaction]			包含数据库和其它支持事务的操作
+[Transaction]			包含数据库和其它支持事务的操作(事务还有很多内容)
 CommittableTransaction	简单的数据库事务(现在一般用SqlTransaction代替)
 EnterpriseServices		使用注解自动添加的事务（需要引入同名引用包）
 DependentTransaction	建立事务与事务之间的依赖关系
 TransactionScope        环境事务
+
+[Net]					C# 网络相关的功能
+HttpNet					一个简单的Http请求
+HttpClientParam			带特殊参数的Http请求(参数决定不同的操作)
+NetHelpClass			Net相关一些辅助类
+SendMail				发邮件
+TcpSimple				一个简单的Tcp实例
+UdpSimple				一个简单的Udp实例
+SocketSimple			socket是tcp udp更底层的操作(通过socket实现tcp)
+
+[Server]				820
+
+[locale]				本地化
+NumberAndDateTimeLocal	数字和日期的区域性设置
