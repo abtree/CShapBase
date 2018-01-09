@@ -42,10 +42,5 @@ namespace NumberAndDateTimeLocal
             Thread.CurrentThread.CurrentCulture = ci;
             Console.WriteLine("{0} : {1} {2}", ci.ToString(), d.ToString("D"), d.ToString("T"));
         }
-
-        public static void Main()
-        {
-            DateFormatDemo();
-        }
     }
 }

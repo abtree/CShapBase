@@ -118,3 +118,15 @@ SocketSimple			socket是tcp udp更底层的操作(通过socket实现tcp)
 
 [locale]				本地化
 NumberAndDateTimeLocal	数字和日期的区域性设置
+
+[xaml]					890
+
+[Managed Extensibility Framework]	909
+
+[Windows Runtime]	941
+
+[ADO.NET CORE]	965
+
+[ADO.NET Entity Framework] 1012
+
+[XML]	1044
