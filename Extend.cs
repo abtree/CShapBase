@@ -53,7 +53,8 @@ namespace Extend
             base.method1();
         }
 
-        //显示隐藏基类方法(用 new 关键字)
+        //用 new 关键字显示隐藏基类方法
+        //(隐藏后不能用基类指针调用到子类的方法，即使基类指针指向子类实例)
         public new void method2()
         {
             //隐藏后依然可以调用

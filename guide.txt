@@ -25,6 +25,7 @@ Delegate				委托
 Lambda					Lambda表达式
 Event					事件 
 StringOperator			字符串的操作 含正则表达式
+reflect					反射
 
 [Collection]			容器
 Array					容器 数组
@@ -130,3 +131,5 @@ NumberAndDateTimeLocal	数字和日期的区域性设置
 [ADO.NET Entity Framework] 1012
 
 [XML]	1044
+
+[WPF]	1100
